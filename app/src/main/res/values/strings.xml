@@ -1,0 +1,9 @@
+<resources>
+    <string name="app_name">ContactBook</string>
+    <string name="title_activity_main2">MainActivity2</string>
+    <string name="add_contact">Add Contact</string>
+    <string name="first_name">First Name</string>
+    <string name="last_name">Last Name</string>
+    <string name="phone_number">Phone Number</string>
+    <string name="save_contact">Save Contact</string>
+</resources>
