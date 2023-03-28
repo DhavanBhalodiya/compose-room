@@ -7,5 +7,5 @@ data class ContactState(
     val lastName:String="",
     val phoneNumber:String="",
     val contacts:List<Contact> = emptyList(),
-    val isAddingContact: Boolean=false
+    val isAddingContact: Boolean=false,
 )

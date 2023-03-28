@@ -1,5 +1,6 @@
 package com.example.composewithroom.data.room
 
+import android.content.LocusId
 import androidx.room.*
 import kotlinx.coroutines.flow.Flow
 
@@ -12,12 +13,15 @@ interface ContactDao {
     @Delete
     suspend fun deleteContact(contact: Contact)
 
+    @Query("select * from contact")
+    fun getContactList(): Flow<List<Contact>>
+
     @Query("Select * from contact ORDER BY firstName ASC")
-     fun getContactOrderByFirstName():Flow<List<Contact>>
+    fun getContactOrderByFirstName(): Flow<List<Contact>>
 
     @Query("Select * from contact ORDER BY lastName ASC")
-     fun getContactOrderByLastName():Flow<List<Contact>>
+    fun getContactOrderByLastName(): Flow<List<Contact>>
 
     @Query("Select * from contact ORDER BY phoneNumber ASC")
-      fun getContactOrderByPhoneNumber():Flow<List<Contact>>
+    fun getContactOrderByPhoneNumber(): Flow<List<Contact>>
 }

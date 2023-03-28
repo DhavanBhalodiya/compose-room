@@ -1,16 +1,12 @@
 package com.example.composewithroom.ui.viewmodel
 
-import androidx.compose.runtime.collectAsState
-import androidx.compose.runtime.mutableStateListOf
-import androidx.compose.runtime.snapshots.SnapshotStateList
+
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.viewModelScope
 import com.example.composewithroom.data.ContactRepository
 import com.example.composewithroom.data.room.Contact
 import kotlinx.coroutines.flow.MutableStateFlow
-import kotlinx.coroutines.flow.collect
-import kotlinx.coroutines.flow.first
 import kotlinx.coroutines.flow.update
 import kotlinx.coroutines.launch
 
@@ -41,8 +37,11 @@ class ContactViewModel(private val contactRepository: ContactRepository) : ViewM
             }
 
             ContactEvent.SaveContact -> {
-                val contact =
-                    Contact(firstName = state.value.firstName, lastName = state.value.lastName, phoneNumber = state.value.phoneNumber)
+                val firstName=state.value.firstName
+                val lastName=state.value.lastName
+                val phoneNumber=state.value.phoneNumber
+
+                val contact = Contact(firstName = firstName, lastName = lastName, phoneNumber = phoneNumber)
                 viewModelScope.launch {
                     contactRepository.insertContact(contact)
                 }
@@ -59,7 +58,8 @@ class ContactViewModel(private val contactRepository: ContactRepository) : ViewM
                 }
             }
             is ContactEvent.SetPhoneNumber -> {
-                _state.update { it.copy(phoneNumber = event.phoneNumber) }
+                if(event.phoneNumber.length<=10)
+                    _state.update { it.copy(phoneNumber = event.phoneNumber) }
             }
             ContactEvent.ShowDialog -> {
                 _state.update { it.copy(isAddingContact = true) }

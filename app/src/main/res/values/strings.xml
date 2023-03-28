@@ -6,4 +6,6 @@
     <string name="last_name">Last Name</string>
     <string name="phone_number">Phone Number</string>
     <string name="save_contact">Save Contact</string>
+    <string name="validation_msg">Please enter all fields</string>
+    <string name="ok">OK</string>
 </resources>

@@ -16,7 +16,7 @@ class ContactRepository(private val dao: ContactDao) {
     }
 
      fun getContactOrderByFirstName(): Flow<List<Contact>> {
-         return dao.getContactOrderByFirstName()
+         return dao.getContactList()
     }
 
 }
