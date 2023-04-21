@@ -13,4 +13,4 @@ dependencyResolutionManagement {
     }
 }
 rootProject.name = "ComposeWithRoom"
-include ':app'
+include(":app")
